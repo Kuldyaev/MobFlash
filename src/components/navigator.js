@@ -7,6 +7,7 @@ import InfoMenu from './infomenu'
 import QuizStartMenu from './quizstartmenu'
 import Quiz from './quiz'
 import AddDeck from './adddeck'
+import AddQuestion from './addquestion'
 
 const Navigator = createStackNavigator({
   Main: {
@@ -48,6 +49,14 @@ const Navigator = createStackNavigator({
           headerTintColor: '#00694b',
           headerStyle: {backgroundColor: '#fafcac'}
         },
+   },    
+    AddQuestion: {
+        screen: AddQuestion,
+        navigationOptions: {
+          title: 'Create New Question Page',
+          headerTintColor: '#00694b',
+          headerStyle: {backgroundColor: '#fafcac'}
+        },    
     },   
 }, {
     initialRouteName: 'Main',

@@ -18,6 +18,12 @@ class QuizStartMenu extends Component {
             underlayColor='#fff'>
                 <Text style={styles.btnText}>Start this Quiz</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => this.props.navigation.navigate('AddQuestion')}
+            underlayColor='#fff'>
+                <Text style={styles.btnText}>Add new question to this Quiz</Text>
+          </TouchableOpacity>
 
       </View>
     );

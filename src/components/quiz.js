@@ -27,7 +27,8 @@ class Quiz extends Component {
                     <Text style={styles.welcome}>Идекс текущего вопроса{this.state.currentQuestion}</Text>
                     <Text style={styles.welcome}>название текущего опроса{this.state.quiz.id}</Text>
                     <Text style={styles.welcome}>Количество вопросов{Object.keys(this.state.quiz.questions).length}</Text>
-                    <Text style={styles.welcome}>Текущий вопрос {this.state.quiz.questions[Object.keys(this.state.quiz.questions)[this.state.currentQuestion]].text}</Text>
+                    <Text style={styles.welcome}>Текущий вопрос {this.state.quiz.questions[Object.keys(this.state.quiz.questions)[this.state.currentQuestion]].Qtext}</Text>
+                    <Text style={styles.welcome}>Текущий ответ {this.state.quiz.questions[Object.keys(this.state.quiz.questions)[this.state.currentQuestion]].Atext}</Text>
                     <View key={this.state.currentQuestion+1}>
                         <Button
                             key= {this.state.currentQuestion+10} 
