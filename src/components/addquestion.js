@@ -2,48 +2,89 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, 
 KeyboardAvoidingView, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
-import {addNewDeck} from '../actions/questions'
+import {addNewQuestion} from '../actions/questions'
 
 
 class AddQuestion extends Component {
     state = {
-        input: "New deck title here",
+        question: "Type here new question",
+        answer: "Type here answer",
     }
   
-  handleTextChange = (input) => {
+    handleTextChangeQ = (input) => {
       this.setState({
-        input  
+        question: input,
+ 
+      })
+  }
+    handleTextChangeA = (input) => {
+      this.setState({
+        answer: input,      
       })
   }
 
   
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container}>
-        <Text style={styles.welcome}>AddDeck</Text>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+        <Text style={styles.welcome}>Add Question</Text>
+        <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions)}</Text>
+        <Text style={styles.welcome}>{this.state.question}</Text>
         <TextInput
-            value= {this.state.input}
+            value= {this.state.question}
             style={styles.input}
-            onChangeText={this.handleTextChange}
-            placeholder= "Type here New deck title "
+            onChangeText={this.handleTextChangeQ}
+            placeholder= "Type here new question "
+            selectTextOnFocus
+        />
+        <TextInput
+            value= {this.state.answer}
+            style={styles.input}
+            onChangeText={this.handleTextChangeA}
+            placeholder= "Type here answer "
             selectTextOnFocus
         />
         <Button
-          title="Create New Deck"
+          title="Create New Question"
           onPress={()=>{
-              if(Object.keys(this.props.questions.decks).includes(String(this.state.input))){
-                alert(
-                "Deck with this title already exist",
-                [{text: "OK"}]
-                )  
-              }
-              else{              
-              this.props.dispatch(addNewDeck({[this.state.input]: {id: this.state.input, 
-                                                                    passed: 'no',
-                                                                    questions: {},
+            if(Object.keys(this.props.questions.decks[this.props.current.deck].questions).includes(this.state.question)){
+                    alert(
+                    "This question already exist",
+                    [{text: "OK"}]
+                    )  
+            }
+            else{
+              if(this.state.question==="Type here new question"){
+                    alert(
+                    "You schould create new question",
+                    [{text: "OK"}]  
+                   ) 
+              }   
+              else{ 
+                if(this.state.answer==="Type here answer"){
+                    alert(
+                    "You schould create new answer",
+                    [{text: "OK"}]  
+                   )      
+                }
+                else{
+              this.props.dispatch(addNewQuestion(this.props.current.deck,
+                                                {[this.state.question]: {Qtext: this.state.question, 
+                                                                         Atext: this.state.answer,
+                                                                          yes: 1,
+                                                                          no: 0,
+                                                                         answer: 'empty',
+                                                                         questions: {},
+                                                                         id: this.state.question,
                                                 }}))
-              this.props.navigation.navigate('Main')
+                this.props.navigation.navigate('QuizStartMenu')
+                } 
               }
+            }
+              
+              
+              
+              
           }}
         />
       </KeyboardAvoidingView>
@@ -75,7 +116,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
     return { 
-       questions: state.questions
+       questions: state.questions, 
+       current: state.current,
     }
     
 }

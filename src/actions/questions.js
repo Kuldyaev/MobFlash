@@ -1,4 +1,4 @@
-import {ADD_NEW_DECK, RECEIVE_DECKS} from './constants'
+import {ADD_NEW_DECK, ADD_NEW_QUESTIONS} from './constants'
 
 
 
@@ -7,10 +7,11 @@ const addNewDeck = (deck) => ({
     deck
 })
 
-const receiveDecks = (decks) => ({
-    type: ADD_INIT_QUESTIONS,
-    decks
+const addNewQuestion = (deck, question) => ({
+    type: ADD_NEW_QUESTIONS,
+    deck,
+    question,
     
 })
 
-export {addNewDeck, receiveDecks}
+export {addNewDeck, addNewQuestion}

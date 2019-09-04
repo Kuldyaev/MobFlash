@@ -1,4 +1,4 @@
-import {ADD_NEW_DECK, RECEIVE_DECKS} from '../actions/constants'
+import {ADD_NEW_DECK,  ADD_NEW_QUESTIONS} from '../actions/constants'
 
 const questions = (state = {id: ["Main page"],
                     decks: { 
@@ -73,11 +73,16 @@ const questions = (state = {id: ["Main page"],
       ['decks']:{...state['decks'], ...action.deck}
           
       }
-    case RECEIVE_DECKS:
+    case  ADD_NEW_QUESTIONS:
       return {
           ...state,
-          ...action.decks
-          
+          ['decks']:{...state['decks'], 
+            [action.deck]:{...state.decks[action.deck],
+               ['questions'] :{...state.decks[action.deck].questions,
+                ...action.question 
+               }    
+            }
+        }
       } 
     default:
       return state
