@@ -1,4 +1,4 @@
-import {SET_CURRENT_DECK, SET_CURRENT_QUESTION} from '../actions/constants'
+import {SET_CURRENT_DECK} from '../actions/constants'
 
 
 
@@ -7,10 +7,4 @@ const setCurrentDeck = (deck) => ({
     payload: deck
 })
 
-const setCurrentQuestion = (question) => ({
-    type: SET_CURRENT_QUESTION,
-    payload: question
-    
-})
-
-export {setCurrentDeck, setCurrentQuestion}
+export {setCurrentDeck}
