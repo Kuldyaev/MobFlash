@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, 
-KeyboardAvoidingView, Button, TextInput } from 'react-native';
+KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import {addNewDeck} from '../actions/questions'
 
@@ -19,7 +19,7 @@ class AddDeck extends Component {
   
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.welcome}>AddDeck</Text>
         <TextInput
             value= {this.state.input}
@@ -28,10 +28,10 @@ class AddDeck extends Component {
             placeholder= "Type here New deck title "
             selectTextOnFocus
         />
-        <Button
-          title="Create New Deck"
-          onPress={()=>{
-              if(Object.keys(this.props.questions.decks).includes(String(this.state.input))){
+        <TouchableOpacity
+            style={styles.btn}
+            onPress={() => {
+                if(Object.keys(this.props.questions.decks).includes(String(this.state.input))){
                 alert(
                 "Deck with this title already exist",
                 [{text: "OK"}]
@@ -43,10 +43,11 @@ class AddDeck extends Component {
                                                                     questions: {},
                                                 }}))
               this.props.navigation.navigate('Main')
-              }
-          }}
-        />
-      </KeyboardAvoidingView>
+              }}}
+            underlayColor='#fff'>
+                <Text style={styles.btnText}>Create New Deck</Text>
+        </TouchableOpacity>
+    </KeyboardAvoidingView>
     );
   }
 }
@@ -69,6 +70,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  btn: {
+    flex: 1,  
+    fontSize: 20,
+    textAlign: 'center',
+    alignItems: 'center',
+    margin: 5,
+    color: 'green',
   },
 });
 
