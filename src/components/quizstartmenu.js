@@ -1,32 +1,84 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-
+import {setQuizRezult} from '../actions/questions'
 
 
 class QuizStartMenu extends Component {
+    
+    restart = () =>{
+         alert("Restart delete results score",[{text: "OK"}])
+         this.props.dispatch(setQuizRezult(this.props.current.deck, 0, 'no'))
+         this.props.navigation.navigate('Quiz')
+    }
     
   render() {
       
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Theme: {this.props.current.deck}</Text>
-        <Text style={styles.welcome}>Result: {this.props.questions.decks[this.props.current.deck].result}</Text>
-        
-        <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions).length} questions</Text>
-        <TouchableOpacity
-            style={styles.btn}
-            onPress={() => this.props.navigation.navigate('Quiz')}
-            underlayColor='#fff'>
-                <Text style={styles.btnText}>Start this Quiz</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => this.props.navigation.navigate('AddQuestion')}
-            underlayColor='#fff'>
-                <Text style={styles.btnText}>Add new question to this Quiz</Text>
-          </TouchableOpacity>
-
+        <View style={styles.container}>
+            <Text style={styles.welcome}>Quiz name: {this.props.current.deck}</Text>
+            <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions).length} questions</Text>
+        </View>
+        <View style={styles.container}>
+            <Text style={styles.welcome}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? "You already pass this quiz"
+                                    : " "
+                                }                               
+            </Text>
+            <Text style={styles.welcome}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? "and your result is "
+                                    : " "
+                                } 
+            </Text>
+            <View>
+                <Text style={styles.welcome}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? ((this.props.questions.decks[this.props.current.deck].result)*100/(Object.keys(this.props.questions.decks[this.props.current.deck].questions).length))
+                                    : " "
+                                }</Text>
+                <Text style={styles.welcome}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? "% "
+                                    : " "
+                                } </Text>
+            </View>    
+        </View>
+        <View style={styles.container}>
+            <TouchableOpacity
+                style={styles.btn}
+                onPress={() => {
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? this.restart()
+                                    : this.props.navigation.navigate('Quiz')
+                }}
+                underlayColor='#fff'>
+                    <Text style={styles.btnText}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? "Restart Quiz"
+                                    : "Start this Quiz "
+                                }
+                    </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => {
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? this.props.navigation.navigate('Main')
+                                    : this.props.navigation.navigate('AddQuestion')
+                   
+                    }}
+                underlayColor='#fff'>
+                    <Text style={styles.btnText}>{
+                                this.props.questions.decks[this.props.current.deck].passed === 'yes'
+                                    ? "Back to Deck"
+                                    : "Add new question to this Quiz "
+                                }
+                    </Text>
+              </TouchableOpacity>
+        </View>
       </View>
     );
   }
