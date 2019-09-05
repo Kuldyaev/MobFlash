@@ -9,18 +9,23 @@ Creating new quizes also available.
 ## Installing
 1.1. Clone information from this repositorie
 
-             git clone https://github.com/Kuldyaev/W-Y-R ['name new directorie']
+             git clone https://github.com/Kuldyaev/MobFlash ['name new directorie']
              
 1.2. Install packages
 
             cd ['name new directorie']
             npm install
+
+1.3  
+
             
-1.3. In the project directory, you can run:
+1.4. In the project directory, you can run:
 
-            $/[name of project]:  npm start
+            $/[name of project]:  expo start
 
-1.4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1.5. Open [http://localhost:19002](http://localhost:19002) to view it in the browser.
+
+
 
  ## Using 
 
