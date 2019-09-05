@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View,  Button } from 'react-native';
+import { Platform, StyleSheet, Text, View} from 'react-native';
 import { connect } from 'react-redux';
 
 
@@ -15,10 +15,6 @@ class Info extends Component {
     return (
       <View style={styles.container}>
        <Text style={styles.welcome}>Info</Text>
-       <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Main')}
-        />
       </View>
     );
   }

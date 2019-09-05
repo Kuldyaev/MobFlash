@@ -35,26 +35,22 @@ class Quiz extends Component {
        const q = this.props.questions.decks[this.props.current.deck]
        
        const     Dashboard = () => (
-                    <View style={styles.container}>
+                    <View style={styles.box1}>
                         <Text style={styles.welcome}>{this.state.quiz.id}</Text>
                         <Text style={styles.welcome}>{this.state.currentQuestion+1} question of {Object.keys(this.state.quiz.questions).length}</Text>
-                        
-                        <Text style={styles.welcome}>{this.state.result}</Text>
-                        <Text style={styles.welcome}>{this.state.show}</Text>
-                        
                     </View>
         );
         const     QuestionText = () => (
-                    <View style={styles.container}>
+                    <View style={styles.box}>
                         <Text style={styles.welcome}>Question: </Text>
-                        <Text style={styles.welcome}>{Object.values(q.questions)[this.state.currentQuestion].Qtext} </Text>
+                        <Text style={styles.welcome1}>{Object.values(q.questions)[this.state.currentQuestion].Qtext} </Text>
                     </View>
         );
         
         const     AnswerText = () => (
-                        <View style={styles.container}>
+                        <View style={styles.box}>
                             <Text style={styles.welcome}>Answer: </Text>
-                            <Text style={styles.welcome}>{
+                            <Text style={styles.welcome1}>{
                                 this.state.show
                                     ? Object.values(q.questions)[this.state.currentQuestion].Atext
                                     : " "
@@ -74,11 +70,10 @@ class Quiz extends Component {
         
        
         const  Buttons = () =>  (
-                  <View style={styles.container}>
-                         <Button
-                            key= {this.state.currentQuestion+10} 
-                            title= "CORRECT" 
-                            onPress={() => {
+                  <View style={styles.box2}>
+                        <TouchableOpacity
+                            style={styles.btn4}
+                             onPress={() => {
                                 if(this.state.currentQuestion < (Object.keys(this.state.quiz.questions).length - 1)){
                                 this.setState({ currentQuestion: this.state.currentQuestion+1,
                                                 result: this.state.result+1,
@@ -89,11 +84,11 @@ class Quiz extends Component {
                                     this.props.navigation.navigate('QuizStartMenu')
                                 }
                             }}
-                            style={styles.btn}
-                        />
-                        <Button
-                            key= {this.state.currentQuestion+5}
-                            title= "FALSE"
+                            underlayColor='#fff'>
+                                <Text style={styles.btnText4}>CORRECT</Text>
+                        </TouchableOpacity>
+                         <TouchableOpacity
+                            style={styles.btn4}
                             onPress={() => {
                                 if(this.state.currentQuestion < (Object.keys(this.state.quiz.questions).length - 1)){
                                 this.setState({ currentQuestion: this.state.currentQuestion+1,
@@ -104,9 +99,10 @@ class Quiz extends Component {
                                     this.props.navigation.navigate('QuizStartMenu')
                                 }
                             }}
-                            style={styles.btn}
-                        />
-               </View>
+                            underlayColor='#fff'>
+                                <Text style={styles.btnText5}>FALSE</Text>
+                        </TouchableOpacity>
+                </View>
           );
 
        
@@ -130,8 +126,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
+  },
+  box: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+  },
+   box1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+    alignItems: 'stretch',
+  },
+  box2: {
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#f8d452',
+    alignItems: 'stretch',
+   
   },
   welcome: {
     fontSize: 20,
@@ -139,16 +156,48 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   welcome1: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: 'center',
     margin: 10,
-    backgroundColor: 'orange',
+    fontWeight: 'bold',
   },
   btn: {
-    fontSize: 20,
+    flex: 1,  
     textAlign: 'center',
     alignItems: 'center',
     margin: 5,
+    color: '#fefff0',
+    backgroundColor: 'green',
+    borderRadius: 10,
+    width: 370,
+    height: 70,
+  },
+  btnText:{
+    color:'#ffd700',
+    textAlign:'center',
+    fontSize: 30,
+  },  
+  btn4: {
+    textAlign: 'center',
+    alignItems: 'center',
+    marginLeft: 2,
+    color: 'green',
+    borderRadius: 5,
+    backgroundColor: '#b8860b',
+    flex: 1
+  },
+   btnText4:{
+      fontSize: 30,
+      color:'green',
+      textAlign:'center',
+      paddingTop: 50,
+  },
+   btnText5:{
+      fontSize: 30,
+      color:'red',
+      textAlign:'center',
+      paddingTop: 50,
+      fontWeight: 'bold',
   },
 });
 
