@@ -42,15 +42,14 @@ For creating new quiz user schould push "Add New Deck" button and type title of 
 
 By selecting an existing survey, the user can add questions to it.
 
-![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/3.JPG)
+![demo](https://github.com/Kuldyaev/MobFlash/blob/master/src/utils/img/image4.JPG)
 
-After authentification process there is access to voting.  
+If "Start Quiz" button was pushed question will be demonstrate.
+User need push "Check Answer" button, read right answer and choose "CORRECT" in case his gues was same.
 
-![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/4.JPG)
+![demo](https://github.com/Kuldyaev/MobFlash/blob/master/src/utils/img/image1.JPG)
 
-By selecting one of the options you will get statistics  on this question
-
-![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/5.JPG)
+After comleting the quiz statistic infotrmation is available.
 
 
 
