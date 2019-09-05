@@ -24,7 +24,7 @@ Creating new quizes also available.
             $/[name of project]:  expo start
 
 1.5. Open [http://localhost:19002](http://localhost:19002) to view it in the browser.
-
+![demo](https://github.com/Kuldyaev/MobFlash/blob/master/src/utils/img/image5.JPG)
 
 
  ## Using 
