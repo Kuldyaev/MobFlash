@@ -17,7 +17,7 @@ Creating new quizes also available.
             npm install
 
 1.3  Make sure that the Expo application is installed. 
-    About Expo installation process you could read here [https://docs.expo.io/versions/latest/introduction/installation/]
+    About Expo installation process you could read here https://docs.expo.io/versions/latest/introduction/installation/
 
             
 1.4. In the project directory, you can run:
