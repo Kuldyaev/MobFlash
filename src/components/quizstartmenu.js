@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Text, View, 
+        TouchableOpacity, Animated  } from 'react-native';
 import { connect } from 'react-redux';
 import {setQuizRezult} from '../actions/questions'
 
 
 class QuizStartMenu extends Component {
+    state = {
+        opacity: new Animated.Value(0),
+        fontSize: new Animated.Value(10),
+        
+    }
+    
+   componentDidMount() {
+    const { opacity, fontSize } = this.state 
+       Animated.timing(opacity, { toValue: 1, duration: 1500}).start()
+       Animated.timing(fontSize, { toValue: 20, duration: 1500}).start()
+    }
     
     restart = () =>{
          alert("Restart delete results score",[{text: "OK"}])
@@ -12,11 +24,19 @@ class QuizStartMenu extends Component {
          this.props.navigation.navigate('Quiz')
     }
     
+    animation = () =>{
+       const { opacity, fontSize } = this.state 
+       
+       Animated.timing(opacity, { toValue: 0, duration: 500}).start()
+       Animated.timing(fontSize, { toValue: 65, duration: 500}).start()
+       this.props.navigation.navigate('QuizStartMenu')
+     }
+    
   render() {
-      
+    const { opacity, fontSize } = this.state   
     return (
       <View style={styles.container}>
-        <View style={styles.box1}>
+        <Animated.View style={[styles.box1, {opacity}]}>
             <View style={styles.box}>
                 <Text style={styles.welcome}>Quiz name: {this.props.current.deck}</Text>
                 <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions).length} questions</Text>
@@ -43,8 +63,7 @@ class QuizStartMenu extends Component {
                 </View>    
             </View>
             <View style={styles.box}/>
- 
-        </View>    
+        </Animated.View>    
         <View style={styles.box2}>
             <TouchableOpacity
                 style={styles.btn4}
@@ -54,12 +73,12 @@ class QuizStartMenu extends Component {
                                     : this.props.navigation.navigate('Quiz')
                 }}
                 underlayColor='#fff'>
-                    <Text style={styles.btnText4}>{
+                    <Animated.Text style={[styles.btnText4, {fontSize}]}>{
                                 this.props.questions.decks[this.props.current.deck].passed === 'yes'
                                     ? "Restart Quiz"
                                     : "Start this Quiz "
                                 }
-                    </Text>
+                    </Animated.Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.btn4}
@@ -70,12 +89,12 @@ class QuizStartMenu extends Component {
                    
                     }}
                 underlayColor='#fff'>
-                    <Text style={styles.btnText4}>{
+                    <Animated.Text style={[styles.btnText4, {fontSize}]}>{
                                 this.props.questions.decks[this.props.current.deck].passed === 'yes'
                                     ? "Back to Deck"
                                     : "Add new question "
                                 }
-                    </Text>
+                    </Animated.Text>
               </TouchableOpacity>
         </View>
       </View>

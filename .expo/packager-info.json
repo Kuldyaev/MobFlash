@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 13068,
-  "expoServerNgrokUrl": "https://uk-h7e.anonymous.mobflash.exp.direct",
-  "packagerNgrokUrl": "https://packager.uk-h7e.anonymous.mobflash.exp.direct",
-  "ngrokPid": 11332,
+  "packagerPid": 16308,
+  "expoServerNgrokUrl": "https://uk-h7e.slavalion.mobflash.exp.direct",
+  "packagerNgrokUrl": "https://packager.uk-h7e.slavalion.mobflash.exp.direct",
+  "ngrokPid": 6384,
   "devToolsPort": 19002
 }

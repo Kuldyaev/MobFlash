@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, 
-            View, FlatList, TouchableOpacity } from 'react-native';
+        View, FlatList, TouchableOpacity,
+        Animated} from 'react-native';
 import { connect } from 'react-redux';
 import {setCurrentDeck} from '../actions/current'
 
@@ -8,43 +9,52 @@ import {setCurrentDeck} from '../actions/current'
 
 class Main extends Component {
     state = {
-        deck: 'main',
+        opacity: new Animated.Value(0.7),
+        fontSize: new Animated.Value(10),
+        
     }
-
+    
+componentDidMount() {
+    const { opacity, fontSize } = this.state 
+       Animated.timing(opacity, { toValue: 1, duration: 1000}).start()
+       Animated.timing(fontSize, { toValue: 30, duration: 1500}).start()
+    }
     
   render() {
-      
+    const { opacity, fontSize } = this.state   
     return (
     <View style={styles.container}>
-       <View style={styles.box1}>
+       <Animated.View style={[styles.box1, {opacity}]}>
        <FlatList
             data={Object.entries(this.props.questions.decks)}
             keyExtractor={(item)=>item[0]}
             renderItem={({item}) => (
-              <TouchableOpacity
+             
+             <TouchableOpacity
                 style={styles.btn3}
                 onPress={() => {
+                    this.props.navigation.navigate('QuizStartMenu')
                     this.props.dispatch(setCurrentDeck(item[0]))
-                    this.props.navigation.navigate('QuizStartMenu')}}
+                }}
                 underlayColor='#fff'>
                     <Text style={styles.btnText0}>{item[1].id}</Text>
                     <Text style={styles.btnText}>{Object.keys(item[1].questions).length} questions</Text>
               </TouchableOpacity>                  
         )}
     />
-        </View>
+        </Animated.View>
         <View style={styles.box2}>
           <TouchableOpacity
             style={styles.btn4}
             onPress={() => this.props.navigation.navigate('Info')}
             underlayColor='#fff'>
-                <Text style={styles.btnText4}>Info</Text>
+                <Animated.Text style={[styles.btnText4, {fontSize}]}>Info</Animated.Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.btn4}
             onPress={() => this.props.navigation.navigate('AddDeck')}
             underlayColor='#fff'>
-                <Text style={styles.btnText4}>AddDeck</Text>
+                <Animated.Text style={[styles.btnText4, {fontSize}]}>AddDeck</Animated.Text>
           </TouchableOpacity>
         </View>
       </View>
