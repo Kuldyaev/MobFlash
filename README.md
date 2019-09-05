@@ -38,9 +38,9 @@ Main page is list of quizes. User could choose each one or create new quiz.
 
 For creating new quiz user schould push "Add New Deck" button and type title of new quiz.
 
-![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/2.JPG)
+![demo](https://github.com/Kuldyaev/MobFlash/blob/master/src/utils/img/image2.JPG)
 
-It's possible to create new user
+By selecting an existing survey, the user can add questions to it.
 
 ![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/3.JPG)
 
