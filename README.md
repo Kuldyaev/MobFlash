@@ -30,7 +30,9 @@ Creating new quizes also available.
 
  ## Using 
 
-The project can be viewed in the browser at http://localhost:3000
+The project was cheked on iOS by iPhone through the tunnel EXPO. 
+
+Main page is list of quizes. User could choose each one or create new quiz.
 
 ![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/1.JPG)
 
