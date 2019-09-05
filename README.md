@@ -34,9 +34,9 @@ The project was cheked on iOS by iPhone through the tunnel EXPO.
 
 Main page is list of quizes. User could choose each one or create new quiz.
 
-![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/1.JPG)
+![demo](https://github.com/Kuldyaev/MobFlash/blob/master/src/utils/img/image3.JPG)
 
-For creating and answering questions you need to log in
+For creating new quiz user schould push "Add New Deck" button and type title of new quiz.
 
 ![demo](https://github.com/Kuldyaev/W-Y-R/blob/master/src/icons/2.JPG)
 
