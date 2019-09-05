@@ -11,7 +11,7 @@ class Quiz extends Component {
                passed: 'no',
                 questions: {},
                 },
-        show :'false'
+        show: false,
     };
         
     componentDidMount () {
@@ -50,16 +50,20 @@ class Quiz extends Component {
         );
         
         const     AnswerText = () => (
-                    <View style={styles.container}>
-                        <Text style={styles.welcome}>Answer: </Text>
-                        <Text style={styles.welcome}>{Object.values(q.questions)[this.state.currentQuestion].Atext} </Text>
-                    </View>
-        );
+                        <View style={styles.container}>
+                            <Text style={styles.welcome}>Answer: </Text>
+                            <Text style={styles.welcome}>{
+                                this.state.show
+                                    ? Object.values(q.questions)[this.state.currentQuestion].Atext
+                                    : " "
+                                } </Text>
+                        </View>
+                );
         
         const     ShowAnswerText = () => (
                     <TouchableOpacity
                         style={styles.btn}
-                        onPress={() => {if(this.state.show === 'false'){this.setState({ show: 'true'})}}}
+                        onPress={() => {if(this.state.show === false){this.setState({ show: true})}}}
                         underlayColor='#fff'>
                                <Text style={styles.btnText}>SHOW ANSWER</Text>
                    </TouchableOpacity>
@@ -76,7 +80,7 @@ class Quiz extends Component {
                                 if(this.state.currentQuestion < (Object.keys(this.state.quiz.questions).length - 1)){
                                 this.setState({ currentQuestion: this.state.currentQuestion+1,
                                                 result: this.state.result+1,
-                                                show: 'false'})
+                                                show: false})
                                 }
                                 else{
                                     this.props.navigation.navigate('Info')
@@ -90,7 +94,7 @@ class Quiz extends Component {
                             onPress={() => {
                                 if(this.state.currentQuestion < (Object.keys(this.state.quiz.questions).length - 1)){
                                 this.setState({ currentQuestion: this.state.currentQuestion+1,
-                                                show: 'false'})
+                                                show: false})
                                 }
                                 else{
                                     this.props.navigation.navigate('Info')
@@ -129,6 +133,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  welcome1: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    backgroundColor: 'orange',
   },
   btn: {
     fontSize: 20,

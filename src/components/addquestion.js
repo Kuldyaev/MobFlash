@@ -28,7 +28,6 @@ class AddQuestion extends Component {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.welcome}>Add Question</Text>
-        <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions)}</Text>
         <Text style={styles.welcome}>{this.state.question}</Text>
         <TextInput
             value= {this.state.question}
@@ -71,11 +70,6 @@ class AddQuestion extends Component {
               this.props.dispatch(addNewQuestion(this.props.current.deck,
                                                 {[this.state.question]: {Qtext: this.state.question, 
                                                                          Atext: this.state.answer,
-                                                                          yes: 1,
-                                                                          no: 0,
-                                                                         answer: 'empty',
-                                                                         questions: {},
-                                                                         id: this.state.question,
                                                 }}))
                 this.props.navigation.navigate('QuizStartMenu')
                 } 

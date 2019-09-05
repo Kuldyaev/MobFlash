@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 3260,
+  "packagerPid": 6900,
   "expoServerNgrokUrl": "https://nr-pdz.anonymous.mobflash.exp.direct",
   "packagerNgrokUrl": "https://packager.nr-pdz.anonymous.mobflash.exp.direct",
-  "ngrokPid": 14928
+  "ngrokPid": 3904,
+  "devToolsPort": 19002
 }
