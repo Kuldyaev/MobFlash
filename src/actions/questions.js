@@ -1,4 +1,4 @@
-import {ADD_NEW_DECK, ADD_NEW_QUESTIONS} from './constants'
+import {ADD_NEW_DECK, ADD_NEW_QUESTIONS, SET_QUIZ_REZULT} from './constants'
 
 
 
@@ -14,4 +14,12 @@ const addNewQuestion = (deck, question) => ({
     
 })
 
-export {addNewDeck, addNewQuestion}
+const setQuizRezult = (deck, result, status) => ({
+    type: SET_QUIZ_REZULT,
+    deck,
+    result,
+    status,
+    
+})
+
+export {addNewDeck, addNewQuestion, setQuizRezult}

@@ -11,6 +11,8 @@ class QuizStartMenu extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Theme: {this.props.current.deck}</Text>
+        <Text style={styles.welcome}>Result: {this.props.questions.decks[this.props.current.deck].result}</Text>
+        
         <Text style={styles.welcome}>{Object.keys(this.props.questions.decks[this.props.current.deck].questions).length} questions</Text>
         <TouchableOpacity
             style={styles.btn}

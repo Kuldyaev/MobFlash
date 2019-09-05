@@ -1,4 +1,4 @@
-import {ADD_NEW_DECK,  ADD_NEW_QUESTIONS} from '../actions/constants'
+import {ADD_NEW_DECK,  ADD_NEW_QUESTIONS, SET_QUIZ_REZULT} from '../actions/constants'
 
 const questions = (state = {id: ["Main page"],
                     decks: { 
@@ -48,6 +48,16 @@ const questions = (state = {id: ["Main page"],
           ...state,
       ['decks']:{...state['decks'], ...action.deck}
           
+      }
+    case SET_QUIZ_REZULT:
+      return {
+          ...state,
+      ['decks']:{...state['decks'],
+        [action.deck]:{...state.decks[action.deck],
+            passed: action.status,
+            result: action.result,
+        }
+       }
       }
     case  ADD_NEW_QUESTIONS:
       return {

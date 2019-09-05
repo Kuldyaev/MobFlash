@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text,
         View, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import {setQuizRezult} from '../actions/questions'
+
 
 
 class Quiz extends Component {
@@ -83,7 +85,8 @@ class Quiz extends Component {
                                                 show: false})
                                 }
                                 else{
-                                    this.props.navigation.navigate('Info')
+                                    this.props.dispatch(setQuizRezult(this.props.current.deck, (this.state.result+1), 'yes'))
+                                    this.props.navigation.navigate('QuizStartMenu')
                                 }
                             }}
                             style={styles.btn}
@@ -97,7 +100,8 @@ class Quiz extends Component {
                                                 show: false})
                                 }
                                 else{
-                                    this.props.navigation.navigate('Info')
+                                    this.props.dispatch(setQuizRezult(this.props.current.deck, this.state.result, 'yes'))
+                                    this.props.navigation.navigate('QuizStartMenu')
                                 }
                             }}
                             style={styles.btn}

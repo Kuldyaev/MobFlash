@@ -1,3 +1,5 @@
 export const ADD_NEW_DECK = 'ADD_NEW_DECK'
 export const  ADD_NEW_QUESTIONS = ' ADD_NEW_QUESTIONS'
 export const SET_CURRENT_DECK = 'SET_CURRENT_DECK'
+
+export const SET_QUIZ_REZULT = 'SET_QUIZ_REZULT'
