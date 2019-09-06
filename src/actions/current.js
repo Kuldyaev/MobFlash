@@ -6,8 +6,9 @@ const setCurrentDeck = (deck) => ({
     type: SET_CURRENT_DECK,
     payload: deck
 })
-const setNotificationStatus = (status) => ({
+const setNotificationStatus = (status, data) => ({
     type: SET_NOTIFICATION_STATUS,
-    status
+    status,
+    data
 })
 export {setCurrentDeck, setNotificationStatus}

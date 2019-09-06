@@ -2,6 +2,7 @@ import {SET_CURRENT_DECK, ADD_NEW_DECK, SET_NOTIFICATION_STATUS} from '../action
 
 const questions = (state = {deck: 0,
                             note: false,
+                            data: 0,
                     
 
                 }, action) => {
@@ -21,7 +22,8 @@ const questions = (state = {deck: 0,
     case SET_NOTIFICATION_STATUS:
       return {
           ...state,
-      ['note']: action.status
+      ['note']: action.status,
+      ['data']: action.data,
           
       }    
     default:

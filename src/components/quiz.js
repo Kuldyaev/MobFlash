@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text,
         View, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import {setQuizRezult} from '../actions/questions'
+import { clearLocalNotification, setLocalNotification } from '../utils/note';
 
 
 
@@ -82,6 +83,7 @@ class Quiz extends Component {
                                 else{
                                     this.props.dispatch(setQuizRezult(this.props.current.deck, (this.state.result+1), 'yes'))
                                     this.props.navigation.navigate('QuizStartMenu')
+                                    clearLocalNotification().then(setLocalNotification)    
                                 }
                             }}
                             underlayColor='#fff'>
@@ -97,6 +99,7 @@ class Quiz extends Component {
                                 else{
                                     this.props.dispatch(setQuizRezult(this.props.current.deck, this.state.result, 'yes'))
                                     this.props.navigation.navigate('QuizStartMenu')
+                                    this.clearLocalNotification().then(setLocalNotification)
                                 }
                             }}
                             underlayColor='#fff'>

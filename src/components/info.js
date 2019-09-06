@@ -16,14 +16,14 @@ class Info extends Component {
             .then(JSON.parse)
             .then((data) => {
               if (data === null) {
-               this.props.dispatch(setNotificationStatus(false))   
+               this.props.dispatch(setNotificationStatus(false, 0))   
               }
               else{
-                this.props.dispatch(setNotificationStatus(true))  
-              }
+                this.props.dispatch(setNotificationStatus(true, String(typeof(data))))  
+            }
             })
-    }     
-                 
+    } 
+
     toggleSwitch = (value) => {
         if (value){
             this.props.dispatch(setNotificationStatus(value))
@@ -41,13 +41,26 @@ class Info extends Component {
 
     return (
       <View style={styles.container}>
-       <Text style={styles.welcome}>Info</Text>
-       <Text style={styles.welcome}>{String(this.props.current.note)}</Text> 
-
-        <Switch
-          style={{marginTop:30}}
-          onValueChange = {this.toggleSwitch}
-          value = {this.props.current.note}/>
+        <View style={styles.box1}>
+          <View style={styles.box3}>
+            <Text style={styles.welcome1}>Notification</Text> 
+            <Text style={styles.welcome1}>{
+                this.props.current.note
+                    ? 'on'
+                    : 'off'
+                }</Text> 
+          </View>
+          <View style={styles.box4}>
+              <Switch
+              style={{marginTop:30}}
+              onValueChange = {this.toggleSwitch}
+              value = {this.props.current.note}/>
+          </View>
+        </View>
+        <View style={styles.box2}>
+            <Text style={styles.welcome}>This is "Mobile Flashcards" project in React&Redux course from UDACITY. Here a user answers questions, check his gueses and can recive score in quizes. Creating new quizes also available.</Text> 
+            <Text style={styles.welcome}>Enjoy!</Text>
+        </View>       
       </View>
     );
   }
@@ -59,11 +72,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    alignItems: 'stretch',
   },
-  welcome: {
+  box1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+    alignItems: 'stretch',
+     flexDirection: 'row',
+  },
+  box2: {
+    flex: 9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+    alignItems: 'stretch',
+   },
+   box3: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+    flexDirection: 'column',
+  },
+   box4: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fefff0',
+    flexDirection: 'column',
+  },
+   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  welcome1: {
+    fontSize: 20,
+    textAlign: 'center',
   },
   container: {
     flex: 1,
