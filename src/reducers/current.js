@@ -1,7 +1,7 @@
-import {SET_CURRENT_DECK, ADD_NEW_DECK} from '../actions/constants'
+import {SET_CURRENT_DECK, ADD_NEW_DECK, SET_NOTIFICATION_STATUS} from '../actions/constants'
 
 const questions = (state = {deck: 0,
-                            question: 0
+                            note: false,
                     
 
                 }, action) => {
@@ -17,7 +17,13 @@ const questions = (state = {deck: 0,
           ...state,
       ['deck']: action.name
           
-      } 
+      }
+    case SET_NOTIFICATION_STATUS:
+      return {
+          ...state,
+      ['note']: action.status
+          
+      }    
     default:
       return state
   }

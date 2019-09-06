@@ -1,4 +1,4 @@
-import {SET_CURRENT_DECK} from '../actions/constants'
+import {SET_CURRENT_DECK, SET_NOTIFICATION_STATUS} from '../actions/constants'
 
 
 
@@ -6,5 +6,8 @@ const setCurrentDeck = (deck) => ({
     type: SET_CURRENT_DECK,
     payload: deck
 })
-
-export {setCurrentDeck}
+const setNotificationStatus = (status) => ({
+    type: SET_NOTIFICATION_STATUS,
+    status
+})
+export {setCurrentDeck, setNotificationStatus}
