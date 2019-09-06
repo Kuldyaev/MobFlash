@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text,
         TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import {addNewDeck} from '../actions/questions'
-
+import {setCurrentDeck} from '../actions/current'
 
 class AddDeck extends Component {
     state = {
@@ -50,11 +50,11 @@ class AddDeck extends Component {
                                 )    
                       }
                       else{                  
-                          this.props.dispatch(addNewDeck({[this.state.input]: {id: this.state.input, 
+                          this.props.dispatch(addNewDeck(this.state.input , {[this.state.input]: {id: this.state.input, 
                                                                                 passed: 'no',
                                                                                 questions: {},
-                                                            }}))
-                          this.props.navigation.navigate('Main')
+                                                        }}))
+                          this.props.navigation.navigate('QuizStartMenu')
                         }
                   
                 }}}

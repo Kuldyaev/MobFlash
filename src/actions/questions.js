@@ -2,8 +2,9 @@ import {ADD_NEW_DECK, ADD_NEW_QUESTIONS, SET_QUIZ_REZULT} from './constants'
 
 
 
-const addNewDeck = (deck) => ({
+const addNewDeck = (name, deck) => ({
     type: ADD_NEW_DECK,
+    name,
     deck
 })
 
