@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer } from '@react-navigation/native';
 import { createStackNavigator } from 'react-navigation-stack';
 import Main from './main'
 import Info from './info'
