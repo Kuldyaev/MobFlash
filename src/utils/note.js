@@ -1,14 +1,14 @@
 import React from 'react'
-import { View, StyleSheet, AsyncStorage } from 'react-native'
-import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
-import { red, orange, blue, lightPurp, pink, white } from './colors'
-import { Notifications, Permissions } from 'expo'
+import { AsyncStorage } from 'react-native'
+import { Notifications } from 'expo'
+import * as Permissions from 'expo-permissions';
+
 
 const NOTIFICATION_KEY = 'UdaciFitness:notifications'
 
 export function getDailyReminderValue () {
   return {
-    today: "👋 Don't forget to log your data today!"
+    today: "Don't forget pass the quiz today!"
   }
 }
 
@@ -20,7 +20,7 @@ export function clearLocalNotification () {
 function createNotification () {
   return {
     title: 'Log your stats!',
-    body: "👋 don't forget to log your stats for today!",
+    body: "don't forget to log your stats for today!",
     ios: {
       sound: true,
     },
@@ -45,8 +45,8 @@ export function setLocalNotification () {
 
               let tomorrow = new Date()
               tomorrow.setDate(tomorrow.getDate() + 1)
-              tomorrow.setHours(20)
-              tomorrow.setMinutes(0)
+              tomorrow.setHours(17)
+              tomorrow.setMinutes(45)
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),
